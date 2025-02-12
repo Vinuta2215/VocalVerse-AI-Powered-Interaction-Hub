@@ -1,0 +1,431 @@
+/* Modern CSS Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #2ecc71;
+    --accent-color: #9b59b6;
+    --danger-color: #e74c3c;
+    --dark-bg: #2c3e50;
+    --light-bg: #f5f6fa;
+    --text-color: #2d3436;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+.main-header {
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.main-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    animation: fadeInDown 0.8s ease;
+}
+
+.main-header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    animation: fadeInUp 0.8s ease;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.nav-buttons button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    background: var(--light-bg);
+    color: var(--text-color);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.nav-buttons button:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    display: none;
+}
+
+.section.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.container {
+    padding: 1.5rem;
+}
+
+textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    resize: vertical;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.controls {
+    margin: 1.5rem 0;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+}
+
+button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    background: var(--primary-color);
+    color: white;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+#start-btn {
+    background: var(--secondary-color);
+}
+
+#stop-btn {
+    background: var(--danger-color);
+}
+
+.slider-control {
+    margin: 1rem 0;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+#summary, #text-summary {
+    background: var(--light-bg);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+}
+
+.auth-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.auth-container input {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.auth-container input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .auth-container {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+        padding: 1rem 2rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .main-header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Dark Mode Theme */
+body.dark-mode {
+    background: var(--dark-bg);
+    color: white;
+}
+
+body.dark-mode .main-header {
+    background: linear-gradient(to right, var(--secondary-color), var(--danger-color));
+}
+
+body.dark-mode button {
+    background: var(--danger-color);
+}
+
+body.dark-mode .section {
+    background: var(--dark-bg);
+    color: white;
+    border: 1px solid #444;
+}
+
+body.dark-mode textarea,
+body.dark-mode input {
+    background: #333;
+    color: white;
+    border-color: #555;
+}
+
+.theme-toggle-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+.speed-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.speed-control input {
+    width: 60%;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.slider-control {
+    margin: 1rem 0;
+}
+
+#font-size-slider {
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+/* Add to style.css */
+.translator-controls {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+    align-items: center;
+}
+
+.translator-button-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.speak-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--secondary-color);
+}
+
+.speak-btn:hover {
+    background-color: #27ae60;
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+.translation-speech-controls {
+    background: var(--light-bg);
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+}
+
+body.dark-mode .translation-speech-controls {
+    background: #333;
+}
+
+#target-language {
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    cursor: pointer;
+}
+
+body.dark-mode #target-language {
+    background: #333;
+    color: white;
+    border-color: #555;
+}
+
+/* Recording button styles */
+.record-btn {
+    background-color: #e74c3c;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.record-btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.download-btn {
+    background-color: #3498db;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Dark mode styles for recording buttons */
+body.dark-mode .record-btn {
+    background-color: #c0392b;
+}
+
+body.dark-mode .download-btn {
+    background-color: #2980b9;
+}
+
+.history-item {
+    background: var(--light-bg);
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.history-item small {
+    color: #777;
+    display: block;
+    margin-top: 0.3rem;
+}
+
+.delete-btn {
+    margin-top: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    background-color: var(--danger-color);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
+  
+  .delete-btn:hover {
+    background-color: #b0413e;
+  }
+
+  canvas {
+    max-width: 100%;
+    height: 400px;
+    margin: 2rem 0;
+}
+
+#statistics-section {
+    padding: 2rem;
+    text-align: center;
+}
+
+.chart-container {
+    margin-bottom: 2rem;
+}
+
